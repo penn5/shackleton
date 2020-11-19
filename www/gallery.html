@@ -1,0 +1,27 @@
+<ons-page id="gallery">
+    <style>
+        .gallery-image {
+            width: 100%;
+        }
+    </style>
+
+    <ons-toolbar id="picture-toolbar">
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+    </ons-toolbar>
+    <ons-carousel id="carousel" fullscreen swipeable auto-scroll autoscroll-ratio="0.1" style="text-align: center; font-size: 30px; margin-top: 20px; color: #ffffff;">
+        <ons-carousel-item style="background-color: #085078;">
+            <div>
+                <img src='shackletonicon.jpg'>
+                <p>A picture of Shackleton</p>
+            </div>
+        </ons-carousel-item>
+        <ons-carousel-item style="background-color: #085078;">
+            <div>
+                <img src="ship.jpg" />
+                <p>Endurance</p>
+            </div>
+        </ons-carousel-item>
+    </ons-carousel>
+</ons-page>

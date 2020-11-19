@@ -1,0 +1,42 @@
+<ons-page id="login">
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            ref = firebase.database().ref("/users/");
+            ref.orderByChild("username").equalTo(username).on("value", function (snapshot) {
+                if (snapshot.val() != null) {
+                    snapshot.forEach(function (data) {
+                        if (password == data.val().password) {
+                            if (username == "admin") {
+                                const container = document.getElementById("pages");
+                                const elem = document.createElement("ons-list-item");
+                                elem.onclick = function () { loadPage("admin-panel.html"); };
+                                elem.innerText = "Admin Panel";
+                                container.appendChild(elem);
+                            }
+                            document.getElementById("navigator").resetToPage("shackleton.html");
+                        } else {
+                            alert("Incorrect password");
+                        }
+                    });
+                } else {
+                    alert("Incorrect username");
+                }
+            })
+        }
+    </script>
+
+    <div style="text-align: center; margin-top: 200px">
+        <p>
+            <ons-input id="username" placeholder="Username" modifier="underbar"></ons-input>
+            <ons-input id="password"
+                       placeholder="Password"
+                       type="password"
+                       modifier="underbar">
+            </ons-input>
+            <br>
+            <ons-button id="signIn" onclick="login()">Sign in</ons-button>
+        </p>
+    </div>
+</ons-page>

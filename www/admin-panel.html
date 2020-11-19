@@ -1,0 +1,27 @@
+<ons-page id="admin-panel">
+    <script>
+        function addNewUser() {
+            const newUserId = document.getElementById('userField').value
+            const newUsername = document.getElementById('nameField').value
+            const newPassword = document.getElementById('passField').value
+            firebase.database().ref('/users/' + newUserId).set({
+                username: newUsername,
+                password: newPassword
+            });
+            console.log("Added user " + newUsername);
+        }
+    </script>
+
+    <ons-toolbar id="home-toolbar">
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+    </ons-toolbar>
+
+    <h2>Create new user</h2>
+    <p>UID: <input type="text" placeholder="ID" id="userField" /></p>
+    <p>Name: <input type="text" placeholder="Username" id="nameField" /></p>
+    <p>Password: <input type="text" placeholder="Password" id="passField" /></p>
+
+    <button onclick="addNewUser();">Add user</button>
+</ons-page>
